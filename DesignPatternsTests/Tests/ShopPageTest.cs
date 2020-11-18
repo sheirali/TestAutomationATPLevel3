@@ -1,4 +1,6 @@
-﻿using DesignPatternsTests.Pages.ShopPage;
+﻿using DesignPatternsTests.Pages;
+using DesignPatternsTests.Utils;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -47,5 +49,63 @@ namespace DesignPatternsTests.Tests
             page.AddFalcon9RocetToCart();
         }
 
+        [TestMethod]
+        [TestCategory("Json")]
+        public void CreateObjectFromJson()
+        {
+            string exeLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            Debug.WriteLine(exeLocation);
+            string exeFolder = System.IO.Path.GetDirectoryName(exeLocation);
+            Debug.WriteLine(exeFolder);
+            string pathToJson = System.IO.Path.Combine(exeFolder, @"Tests\BillingUserInfo.json");
+            Debug.WriteLine(pathToJson);
+
+            var config = new ConfigurationBuilder()
+                .AddJsonFile(pathToJson, optional: false, reloadOnChange: true)
+                .Build();
+            Assert.IsNotNull(config);
+
+            var billing = config.GetSection("billingDetailItem").Get<BillingDetailItem>();
+            Assert.IsNotNull(billing);
+
+            Assert.AreEqual<string>("Fred", billing.FirstName);
+        }
+
+        [TestMethod]
+        [TestCategory("Workflow")]
+        public void SingleWorkflow()
+        {
+            PurchaseWorkflow flow = new PurchaseWorkflow(_driver);
+            flow.PurchaseRocket("Falcon 9", 3, "happybirthday");
+        }
+
+        [DataTestMethod]
+        [TestCategory("Workflow")]
+        [DataRow("Falcon 9", 3, "happybirthday")]
+        [DataRow("Proton Rocket", 2)]
+        [DataRow("Saturn V", 4, "happybirthday")]
+        [DataRow("Falcon Heavy", 5)]
+        public void RepeatedWorkflow(string rocketName, int quantity, string coupon = null)
+        {
+            PurchaseWorkflow flow = new PurchaseWorkflow(_driver);
+            flow.PurchaseRocket(rocketName, quantity, coupon);
+        }
+
+
+        [DataTestMethod]
+        [TestCategory("ShopPage")]
+        [DataRow("Falcon 9", 3, "happybirthday")]
+        [DataRow("Proton Rocket", 2)]
+        //[DataRow("Proton-M", 3)]
+        [DataRow("Saturn V", 4, "happybirthday")]
+        [DataRow("Falcon Heavy", 5)]        
+        public void BuyRocket(string rocketName, int quantity, string coupon = null)
+        {
+            Assert.IsNotNull(rocketName);
+            Assert.AreNotEqual<int>(0, quantity);
+
+            ShopPage page = new ShopPage(_driver);
+            page.PurchaseRocket(rocketName);
+        }
     }
 }

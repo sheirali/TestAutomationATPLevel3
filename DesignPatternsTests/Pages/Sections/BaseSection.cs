@@ -4,6 +4,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace DesignPatternsTests.Pages.Sections
 {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatternsTests.Pages.Sections.BreadcrumbSection
+namespace DesignPatternsTests.Pages.Sections
 {
     public partial class BreadcrumbSection : BaseSection
     {

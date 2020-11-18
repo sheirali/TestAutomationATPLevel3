@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace DesignPatternsTests.Pages
 {
@@ -27,6 +28,9 @@ namespace DesignPatternsTests.Pages
             }
 
             Driver.Navigate().GoToUrl(string.Concat(Url, part));
+
+            //maximize
+            Driver.Manage().Window.Maximize();
 
             //wait till page completely loads??
             this.WaitUntilPageLoadsCompletely();

@@ -1,12 +1,8 @@
-﻿using DesignPatternsTests.Pages.Sections.MenuSection;
-using DesignPatternsTests.Pages.Sections.SearchSection;
-using DesignPatternsTests.Pages.Sections.ViewCartSection;
+﻿using DesignPatternsTests.Pages.Sections;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 
-namespace DesignPatternsTests.Pages.ShopPage
+namespace DesignPatternsTests.Pages
 {
     public partial class ShopPage : BasePage
     {
@@ -25,12 +21,29 @@ namespace DesignPatternsTests.Pages.ShopPage
         
         public IWebElement ViewCartButton => FindClickableElement(By.CssSelector("[class*='added_to_cart wc-forward']"));
 
+        private IWebElement RocketAddToCart(string rocketName)
+        {
+            //  aria-label="Add “Falcon 9” to your cart"
+            string selector = $"[aria-label='Add “{rocketName}” to your cart']";
+            Debug.WriteLine($"RocketAddToCart -- CssSelector = {selector}");
+            var cartButton = FindClickableElement(By.CssSelector(selector));
+            return cartButton;
+        }
+
         public void AddFalcon9RocetToCart()
         {
             this.Open();
             AddToCartFalcon9?.Click();
             ViewCartButton?.Click();
             this.WaitUntilPageLoadsCompletely();
+        }
+
+        public void PurchaseRocket(string rocketName)
+        {
+            this.Open();
+            RocketAddToCart(rocketName)?.Click();
+            ViewCartButton?.Click();
+            this.WaitUntilPageLoadsCompletely();//Cart page should now be loaded
         }
     }
 }
