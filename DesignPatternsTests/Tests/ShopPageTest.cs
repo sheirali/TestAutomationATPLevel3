@@ -83,8 +83,10 @@ namespace DesignPatternsTests.Tests
         [TestCategory("Workflow")]
         [DataRow("Falcon 9", 3, "happybirthday")]
         [DataRow("Proton Rocket", 2)]
+        [DataRow("Proton Rocket", 3)]
         [DataRow("Saturn V", 4, "happybirthday")]
-        [DataRow("Falcon Heavy", 5)]
+        [DataRow("Saturn V", 5, "happybirthday")]
+        ////[DataRow("Falcon Heavy", 1)]
         public void RepeatedWorkflow(string rocketName, int quantity, string coupon = null)
         {
             PurchaseWorkflow flow = new PurchaseWorkflow(_driver);

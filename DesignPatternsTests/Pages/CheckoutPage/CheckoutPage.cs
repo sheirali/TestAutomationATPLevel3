@@ -2,10 +2,7 @@
 using DesignPatternsTests.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace DesignPatternsTests.Pages
 {
@@ -48,25 +45,25 @@ namespace DesignPatternsTests.Pages
                 return;
             }
 
-            SetBillingTextInfo(this.FirstNameText, purchaser.FirstName);
-            SetBillingTextInfo(this.LastNameText, purchaser.LastName);
-            SetBillingTextInfo(this.CompanyNameText, purchaser.CompanyName);
-            SetBillingTextInfo(this.AddressLine1Text, purchaser.AddressLine1);
-            SetBillingTextInfo(this.AddressLine2Text, purchaser.AddressLine2);
-            SetBillingTextInfo(this.CityText, purchaser.City);
-            SetBillingTextInfo(this.PostalCodeText, purchaser.PostalCode);
-            SetBillingTextInfo(this.PhoneNumberText, purchaser.PhoneNumber);
-            SetBillingTextInfo(this.EmailAddressText, purchaser.EmailAddress);
-            SetBillingTextInfo(this.OrderNotesText, purchaser.OrderNotes);
+            SetBillingTextInfo(FirstNameText, purchaser.FirstName);
+            SetBillingTextInfo(LastNameText, purchaser.LastName);
+            SetBillingTextInfo(CompanyNameText, purchaser.CompanyName);
+            SetBillingTextInfo(AddressLine1Text, purchaser.AddressLine1);
+            SetBillingTextInfo(AddressLine2Text, purchaser.AddressLine2);
+            SetBillingTextInfo(CityText, purchaser.City);
+            SetBillingTextInfo(PostalCodeText, purchaser.PostalCode);
+            SetBillingTextInfo(PhoneNumberText, purchaser.PhoneNumber);
+            SetBillingTextInfo(EmailAddressText, purchaser.EmailAddress);
+            SetBillingTextInfo(OrderNotesText, purchaser.OrderNotes);
 
-            SetBillingDropdownInfo(this.CountryDropDown, purchaser.Country);
+            SetBillingDropdownInfo(CountryDropDown, purchaser.Country);
             WaitForAjax();
 
-            SetBillingDropdownInfo(this.StateDropDown, purchaser.State);
+            SetBillingDropdownInfo(StateDropDown, purchaser.State);
             WaitForAjax();
 
 
-            if (purchaser.CreateAccount && !this.CreateAccountCheckbox.Selected)
+            if (purchaser.CreateAccount && !CreateAccountCheckbox.Selected)
             {
                 Debug.WriteLine("CheckoutPage.PopulateBillingInfo() -- call CreateAccountCheckbox.Click");
                 CreateAccountCheckbox.Click();
@@ -97,9 +94,9 @@ namespace DesignPatternsTests.Pages
         {
             Debug.WriteLine("CheckoutPage.PlaceOrder() -- call PlaceOrderButton.Click");
             WaitForAjax();
-            this.PlaceOrderButton?.Click();
+            PlaceOrderButton?.Click();
         }
 
-        public string GetTotal => this.TotalText.Text;
+        public string GetTotal => TotalText.Text;
     }
 }

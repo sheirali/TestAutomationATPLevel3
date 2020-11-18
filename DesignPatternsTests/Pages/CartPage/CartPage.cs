@@ -41,9 +41,8 @@ namespace DesignPatternsTests.Pages
         public void Quantity(int amount)
         {
             Debug.WriteLine($"CartPage.Quantity({amount})");
-
-            this.QuantityText.Clear();
-            this.QuantityText.SendKeys(amount.ToString());
+            QuantityText.Clear();
+            QuantityText.SendKeys(amount.ToString());
         }
 
         public void UpdateCart()
@@ -79,9 +78,9 @@ namespace DesignPatternsTests.Pages
         {
             Debug.WriteLine("CartPage.UpdateCart()");
 
-            this.ProceedToCheckoutButton?.Click();
+            ProceedToCheckoutButton?.Click();
 
-            this.WaitUntilPageLoadsCompletely();//Checkout page should now be loaded
+            WaitUntilPageLoadsCompletely();//Checkout page should now be loaded
         }
     }
 }

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace DesignPatternsTests.Tests
 {
@@ -36,11 +37,12 @@ namespace DesignPatternsTests.Tests
         private void CreateBillingInfo()
         {
             string exeLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string exeFolder = System.IO.Path.GetDirectoryName(exeLocation);
-            string pathToJson = System.IO.Path.Combine(exeFolder, @"Tests\BillingUserInfo.json");
+            string exeFolder = Path.GetDirectoryName(exeLocation);
+            string configFile = Directory.GetFiles(Path.Combine(exeFolder, "Tests"), "BillingUserInfo.*").FirstOrDefault();
+            ////string pathToJson = Path.Combine(exeFolder, @"Tests\BillingUserInfo.json");
 
             var config = new ConfigurationBuilder()
-                .AddJsonFile(pathToJson, optional: false, reloadOnChange: true)
+                .AddJsonFile(configFile, optional: false, reloadOnChange: true)
                 .Build();
             Assert.IsNotNull(config);
 

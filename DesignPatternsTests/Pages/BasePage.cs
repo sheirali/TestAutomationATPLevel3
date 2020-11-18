@@ -14,8 +14,7 @@ namespace DesignPatternsTests.Pages
         public BasePage(IWebDriver driver)
         {
             Driver = driver;
-            // wait 30 seconds.
-            DriverWait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            DriverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
         }
 
         public virtual string Url => string.Empty;
@@ -28,12 +27,8 @@ namespace DesignPatternsTests.Pages
             }
 
             Driver.Navigate().GoToUrl(string.Concat(Url, part));
-
-            //maximize
             Driver.Manage().Window.Maximize();
-
-            //wait till page completely loads??
-            this.WaitUntilPageLoadsCompletely();
+            WaitUntilPageLoadsCompletely();
         }
 
         public IWebElement FindElement(By by)
