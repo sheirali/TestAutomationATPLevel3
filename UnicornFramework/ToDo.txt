@@ -1,0 +1,6 @@
+- update all projects.csproj files to reference 
+ref	C:\Users\sheir\source\repos\sheirali\TestAutomationATPLevel3\UnicornFramework\Unicorn.App\Unicorn.App.csproj
+
+
+
+
