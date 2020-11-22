@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unicorn.Container;
+using Unicorn;
 
-namespace Unicorn.App
+namespace Unicorn
 {
     public class BaseApp : IDisposable
     {

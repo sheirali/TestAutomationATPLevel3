@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary1
+namespace Unicorn.Web.Proxy
 {
     public class Class1
     {
