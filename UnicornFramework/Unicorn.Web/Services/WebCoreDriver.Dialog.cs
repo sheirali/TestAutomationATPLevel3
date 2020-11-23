@@ -7,7 +7,23 @@ namespace Unicorn.Web.Services
 {
     public partial class WebCoreDriver : IDialogService
     {
-        // TODO: complete class WebCoreDriver IDialogService
-        public void Handle() => throw new NotImplementedException();
+        public void Handle(Action<IAlert> action = null, DialogButton dialogButton = DialogButton.Ok)
+        {
+            var alert = _driver.SwitchTo().Alert();
+            action?.Invoke(alert);
+
+            ////dialogButton == DialogButton.Ok ? alert.Accept() : alert.Dismiss();
+
+            if (dialogButton == DialogButton.Ok)
+            {
+                alert.Accept();
+            }
+            else
+            {
+                alert.Dismiss();
+            }
+
+            _driver.SwitchTo().DefaultContent();
+        }
     }
 }

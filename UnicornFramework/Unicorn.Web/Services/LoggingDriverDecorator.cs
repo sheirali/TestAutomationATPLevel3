@@ -75,17 +75,17 @@ namespace Unicorn.Web.Services
             Driver?.Handle();
         }
 
-        public void Quit()
-        {
-            Console.WriteLine($"Quit()");
-            Driver?.Quit();
-        }
+        ////public void Quit()
+        ////{
+        ////    Console.WriteLine($"Quit()");
+        ////    Driver?.Quit();
+        ////}
 
-        public void Start(Browser browser)
-        {
-            Console.WriteLine($"Start({browser})");
-            Driver?.Start(browser);
-        }
+        ////public void Start(Browser browser)
+        ////{
+        ////    Console.WriteLine($"Start({browser})");
+        ////    Driver?.Start(browser);
+        ////}
 
         public void Wait(Element element, WaitStrategy waitStrategy)
         {

@@ -15,5 +15,9 @@ namespace Unicorn.Web
         void AddCookie(Cookie cookie);
 
         ReadOnlyCollection<Cookie> AllCookies { get; }
+
+        void AddCookie(string cookieName, string cookieValue);
+
+        Cookie GetCookie(string cookieName);
     }
 }

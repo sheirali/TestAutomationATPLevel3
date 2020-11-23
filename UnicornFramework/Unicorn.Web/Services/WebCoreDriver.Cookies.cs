@@ -10,6 +10,16 @@ namespace Unicorn.Web.Services
     {
         public ReadOnlyCollection<Cookie> AllCookies => _driver.Manage().Cookies.AllCookies;
 
+        public void AddCookie(string cookieName, string cookieValue)
+        {
+            _driver.Manage().Cookies.AddCookie(new Cookie(cookieName, cookieValue));
+        }
+
+        public Cookie GetCookie(string cookieName)
+        {
+            return _driver.Manage().Cookies.GetCookieNamed(cookieName);
+        }
+
         public void AddCookie(Cookie cookie)
         {
             _driver.Manage().Cookies.AddCookie(cookie);
