@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Unicorn.Web.FindStrategies;
 using Unicorn.Web.WaitStrategies;
 
 namespace Unicorn.Web.Services
@@ -14,11 +15,20 @@ namespace Unicorn.Web.Services
         {
         }
 
-        public List<Element> CreateAllById(string id)
+        public List<TElement> CreateAllById<TElement>(string id)
+            where TElement : Element
         {
             Console.WriteLine($"CreateAllById({id})");
 
-            return Driver.CreateAllById(id);
+            return Driver?.CreateAllById<TElement>(id);
+        }
+
+        public TElement Create<TElement>(FindStrategy findStrategy)
+            where TElement : Element
+        {
+            Console.WriteLine($"Create({findStrategy})");
+
+            return Driver?.Create<TElement>(findStrategy);
         }
 
         public Uri Url

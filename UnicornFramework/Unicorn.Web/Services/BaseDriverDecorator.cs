@@ -22,77 +22,55 @@ namespace Unicorn.Web.Services
         public ReadOnlyCollection<Cookie> AllCookies => Driver?.AllCookies;
 
         public void AddCookie(Cookie cookie) => Driver?.AddCookie(cookie);
+        public void AddCookie(string cookieName, string cookieValue) => Driver?.AddCookie(cookieName, cookieValue);
 
-        public Element Create(FindStrategy findStrategy) => Driver?.Create(findStrategy);
-
-        public List<Element> CreateAll(FindStrategy findStrategy)
-        {
-            return Driver?.CreateAll(findStrategy);
-        }
-
-        public List<Element> CreateAllByClass(string cssClass)
-        {
-            return Driver?.CreateAllByClass(cssClass);
-        }
-
-        public List<Element> CreateAllByCss(string css)
-        {
-            return Driver?.CreateAllByCss(css);
-        }
-
-        public List<Element> CreateAllById(string id)
-        {
-            return Driver?.CreateAllById(id);
-        }
-
-        public List<Element> CreateAllByLinkText(string linkText)
-        {
-            return Driver?.CreateAllByLinkText(linkText);
-        }
-
-        public List<Element> CreateAllByTag(string tag)
-        {
-            return Driver?.CreateAllByTag(tag);
-        }
-
-        public List<Element> CreateAllByXPath(string xpath)
-        {
-            return Driver?.CreateAllByXPath(xpath);
-        }
-
-        public Element CreateByClass(string cssClass)
-        {
-            return Driver?.CreateByClass(cssClass);
-        }
-
-        public Element CreateByCss(string css)
-        {
-            return Driver?.CreateByCss(css);
-        }
-
-        public Element CreateById(string id)
-        {
-            return Driver?.CreateById(id);
-        }
-
-        public Element CreateByLinkText(string linkText)
-        {
-            return Driver?.CreateByLinkText(linkText);
-        }
-
-        public Element CreateByTag(string tag)
-        {
-            return Driver?.CreateByTag(tag);
-        }
-
-        public Element CreateByXPath(string xpath)
-        {
-            return Driver?.CreateByXPath(xpath);
-        }
+        public TElement Create<TElement>(FindStrategy findStrategy)
+            where TElement : Element
+            => Driver?.Create<TElement>(findStrategy);
+        public List<TElement> CreateAll<TElement>(FindStrategy findStrategy)
+            where TElement : Element
+            => Driver?.CreateAll<TElement>(findStrategy);
+        public List<TElement> CreateAllByClass<TElement>(string cssClass)
+            where TElement : Element
+            => Driver?.CreateAllByClass<TElement>(cssClass);
+        public List<TElement> CreateAllByCss<TElement>(string css)
+            where TElement : Element
+            => Driver?.CreateAllByCss<TElement>(css);
+        public List<TElement> CreateAllById<TElement>(string id)
+            where TElement : Element
+            => Driver?.CreateAllById<TElement>(id);
+        public List<TElement> CreateAllByLinkText<TElement>(string linkText)
+            where TElement : Element
+            => Driver?.CreateAllByLinkText<TElement>(linkText);
+        public List<TElement> CreateAllByTag<TElement>(string tag)
+            where TElement : Element
+            => Driver?.CreateAllByTag<TElement>(tag);
+        public List<TElement> CreateAllByXPath<TElement>(string xpath)
+            where TElement : Element
+            => Driver?.CreateAllByXPath<TElement>(xpath);
+        public TElement CreateByClass<TElement>(string cssClass)
+            where TElement : Element
+            => Driver?.CreateByClass<TElement>(cssClass);
+        public TElement CreateByCss<TElement>(string css)
+            where TElement : Element
+            => Driver?.CreateByCss<TElement>(css);
+        public TElement CreateById<TElement>(string id)
+            where TElement : Element
+            => Driver?.CreateById<TElement>(id);
+        public TElement CreateByLinkText<TElement>(string linkText)
+            where TElement : Element
+            => Driver?.CreateByLinkText<TElement>(linkText);
+        public TElement CreateByTag<TElement>(string tag)
+            where TElement : Element
+            => Driver?.CreateByTag<TElement>(tag);
+        public TElement CreateByXPath<TElement>(string xpath)
+            where TElement : Element
+            => Driver?.CreateByXPath<TElement>(xpath);
 
         public void DeleteAllCookies() => Driver?.DeleteAllCookies();
         public void DeleteCookie(Cookie cookie) => Driver?.DeleteCookie(cookie);
         public object Execute(string script) => Driver?.Execute(script);
+        public Cookie GetCookie(string cookieName) => throw new NotImplementedException();
         public void GoToUrl(string url) => Driver?.GoToUrl(url);
         public void Handle() => Driver?.Handle();
         public void Handle(Action<IAlert> action = null, DialogButton dialogButton = DialogButton.Ok) => throw new NotImplementedException();

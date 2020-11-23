@@ -4,8 +4,15 @@ using System.Text;
 
 namespace Unicorn.Web.FindStrategies
 {
-    public class FindStrategy
+    public abstract class FindStrategy
     {
-        // TODO: complete class FindStrategy
+        protected FindStrategy(string value)
+        {
+            Value = value;
+        }
+
+        public string Value { get; }
+
+        public abstract OpenQA.Selenium.By Convert();
     }
 }

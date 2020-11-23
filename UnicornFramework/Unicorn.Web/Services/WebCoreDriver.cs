@@ -18,5 +18,7 @@ namespace Unicorn.Web.Services
             var timeoutSettings = ConfigurationService.GetSection<TimeoutSettings>();
             _webDriverWait = new WebDriverWait(wrappedDriver, TimeSpan.FromSeconds(timeoutSettings.WaitForAjaxTimeout));
         }
+
+        protected IWebDriver Driver => _driver;
     }
 }

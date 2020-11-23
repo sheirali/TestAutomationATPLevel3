@@ -15,13 +15,13 @@ namespace Unicorn.Web
         public TPage Create<TPage>()
             where TPage : class
         {
-            return default(TPage);
+            return default;
         }
 
         public TPage GoTo<TPage>()
             where TPage : class
         {
-            return default(TPage);
+            return default;
         }
     }
 }
