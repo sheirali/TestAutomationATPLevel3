@@ -10,9 +10,9 @@ namespace Unicorn.Web
 
         void WaitUntilPageLoadsCompletely();
 
-        // TODO:  does Start/Quit go here??
-        void Start(Browser browser);
+        // TODO:  we will put them in the DriverFactory class.
+        ////void Start(Browser browser);
 
-        void Quit();
+        ////void Quit();
     }
 }

@@ -8,42 +8,42 @@ namespace Unicorn.Web.Services
 {
     public partial class WebCoreDriver : IBrowserService
     {
-        public void Quit()
-        {
-            _driver?.Quit();
-        }
+        ////public void Quit()
+        ////{
+        ////    _driver?.Quit();
+        ////}
 
-        public void Start(Browser browser)
-        {
-            // TODO: implement Start gutz
-            switch (browser)
-            {
-                case Browser.Chrome:
-                    // _driver = new ChromeDriver(Environment.CurrentDirectory);
-                    break;
-                case Browser.Firefox:
-                    // _webDriver = new FirefoxDriver(Environment.CurrentDirectory);
-                    break;
-                case Browser.Edge:
-                    // _webDriver = new EdgeDriver(Environment.CurrentDirectory);
-                    break;
-                case Browser.Opera:
-                    // _webDriver = new OperaDriver(Environment.CurrentDirectory);
-                    break;
-                case Browser.Safari:
-                    // _webDriver = new SafariDriver(Environment.CurrentDirectory);
-                    break;
-                case Browser.InternetExplorer:
-                    // _webDriver = new InternetExplorerDriver(Environment.CurrentDirectory);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
-                    break;
-            }
+        ////public void Start(Browser browser)
+        ////{
+        ////    // TODO: implement Start gutz
+        ////    switch (browser)
+        ////    {
+        ////        case Browser.Chrome:
+        ////            // _driver = new ChromeDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        case Browser.Firefox:
+        ////            // _webDriver = new FirefoxDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        case Browser.Edge:
+        ////            // _webDriver = new EdgeDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        case Browser.Opera:
+        ////            // _webDriver = new OperaDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        case Browser.Safari:
+        ////            // _webDriver = new SafariDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        case Browser.InternetExplorer:
+        ////            // _webDriver = new InternetExplorerDriver(Environment.CurrentDirectory);
+        ////            break;
+        ////        default:
+        ////            throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
+        ////            break;
+        ////    }
 
-            // _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
-            // _elementFinderService = new ElementFinderService(_webDriver, _webDriver);
-        }
+        ////    // _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
+        ////    // _elementFinderService = new ElementFinderService(_webDriver, _webDriver);
+        ////}
 
         public void WaitForAjax()
         {

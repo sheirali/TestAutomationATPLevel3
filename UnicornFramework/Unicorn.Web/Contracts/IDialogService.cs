@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,6 @@ namespace Unicorn.Web
 {
     public interface IDialogService
     {
-        // TODO: complete signature & implement guts
-        void Handle();
+        void Handle(Action<IAlert> action = null, DialogButton dialogButton = DialogButton.Ok);
     }
 }

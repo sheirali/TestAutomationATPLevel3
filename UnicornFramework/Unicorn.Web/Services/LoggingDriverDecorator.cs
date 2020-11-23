@@ -9,19 +9,16 @@ namespace Unicorn.Web.Services
 {
     public partial class LoggingDriverDecorator : BaseDriverDecorator
     {
-        // TODO: complete class LoggingDriverDecorator
-        public LoggingDriverDecorator(WebCoreDriver driver)
+        public LoggingDriverDecorator(IDriver driver)
             : base(driver)
         {
         }
 
         public List<Element> CreateAllById(string id)
         {
-            // TODO: implement CreateAllById
             Console.WriteLine($"CreateAllById({id})");
 
-            // base.CreateAllById(id)
-            return null;
+            return Driver.CreateAllById(id);
         }
 
         public Uri Url
