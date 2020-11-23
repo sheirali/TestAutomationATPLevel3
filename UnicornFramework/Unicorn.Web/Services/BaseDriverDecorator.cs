@@ -77,7 +77,7 @@ namespace Unicorn.Web.Services
 
         ////public void Quit() => Driver?.Quit();
         ////public void Start(Browser browser) => Driver?.Start(browser);
-        public void Wait(Element element, WaitStrategy waitStrategy) => Driver?.Wait(element, waitStrategy);
+        ////public void Wait(Element element, WaitStrategy waitStrategy) => Driver?.Wait(element, waitStrategy);
         public void WaitForAjax() => Driver?.WaitForAjax();
         public void WaitUntilPageLoadsCompletely() => Driver?.WaitUntilPageLoadsCompletely();
     }

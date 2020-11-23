@@ -2,11 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 using Unicorn;
+using Unicorn.Web.Services;
 
 namespace Unicorn.Web
 {
     public class WebApp : BaseApp
     {
+        private IDriver _driver;
+
+        public WebApp()
+        {
+            var webCoreDriver = ServiceContainer.Resolve<WebCoreDriver>();
+            _driver = new LoggingDriverDecorator(webCoreDriver);
+        }
+
+        public IElementCreateService ElementCreateService => _driver;
+
+        public IBrowserService BrowserService => _driver;
+        public INavigationService NavigationService => _driver;
+        public ICookieService CookieService => _driver;
+        public IDialogService DialogService => _driver;
+        public IJavaScriptService JavaScriptService => _driver;
+
         public void AddBrowserOptions<TOptions>()
             where TOptions : class
         {

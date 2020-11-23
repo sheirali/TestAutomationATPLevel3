@@ -11,5 +11,7 @@ namespace Unicorn.Web
         }
 
         public WebApp App { get; private set; }
+
+        ////public WebApp App => new WebApp();
     }
 }

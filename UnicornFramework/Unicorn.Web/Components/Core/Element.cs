@@ -1,35 +1,86 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using Unicorn.Web.FindStrategies;
+using Unicorn.Web.Services;
+using Unicorn.Web.WaitStrategies;
 
 namespace Unicorn.Web
 {
     public abstract class Element : IElementCreateService
     {
+        private List<WaitStrategy> _waitStrategies = new List<WaitStrategy>();
         protected IWebDriver Driver;
+        ////private IElementWaitService _elementWaitService = new WebCoreDriver(Driver);
 
         public Element()
         {
             Driver = ServiceContainer.Resolve<IWebDriver>();
+            _waitStrategies.Add(new ToExistsWaitStrategy());
         }
 
         public Element(IWebDriver driver, By by, IWebElement wrappedElement)
         {
             Driver = driver;
             By = by;
-            WrappedElement = wrappedElement;
+            ParentElement = wrappedElement;
+            _waitStrategies.Add(new ToExistsWaitStrategy());
         }
 
         public Element(IWebDriver driver, By by)
         {
             Driver = driver;
             By = by;
+            _waitStrategies.Add(new ToExistsWaitStrategy());
+            ////WrappedElement.GetCssValue() //example call
         }
 
-        public IWebElement WrappedElement { get; set; }
+        public IWebElement WrappedElement => GetAndWaitElement();
+        public IWebElement ParentElement { get; set; }
+
+        public Size Size => WrappedElement.Size;
+        public Point Location => WrappedElement.Location;
+
+        public IWebElement WaitToBe()
+        {
+            return GetAndWaitElement();
+        }
+
+        private IWebElement GetAndWaitElement()
+        {
+            IWebElement webElement = default;
+            foreach (var strategy in _waitStrategies)
+            {
+                if (ParentElement != null)
+                {
+                    strategy.WaitUntil(ParentElement, Driver, By);
+                }
+                else
+                {
+                    strategy.WaitUntil(Driver, Driver, By);
+                }
+            }
+
+            if (ParentElement != null)
+            {
+                webElement = ParentElement.FindElement(By);
+            }
+            else
+            {
+                webElement = Driver.FindElement(By);
+            }
+
+            return webElement;
+        }
+
         public By By { get; set; }
+
+        public void EnsureState(WaitStrategy waitStrategy)
+        {
+            _waitStrategies.Add(waitStrategy);
+        }
 
         public TElement CreateById<TElement>(string id)
             where TElement : Element
@@ -68,6 +119,7 @@ namespace Unicorn.Web
             return Create<TElement>(new LinkTextFindStrategy(linkText));
         }
 
+        // TODO: implement  List<TElement> CreateXXX methods, maybe List<TElement> => to custom object
         public List<TElement> CreateAllById<TElement>(string id)
             where TElement : Element
             => throw new NotImplementedException();
@@ -79,7 +131,11 @@ namespace Unicorn.Web
             => throw new NotImplementedException();
         public List<TElement> CreateAllByClass<TElement>(string cssClass)
             where TElement : Element
-            => throw new NotImplementedException();
+        {
+            var strategy = new ClassFindStrategy(cssClass);
+            throw new NotImplementedException();
+        }
+
         public List<TElement> CreateAllByCss<TElement>(string css)
             where TElement : Element
             => throw new NotImplementedException();
@@ -95,7 +151,7 @@ namespace Unicorn.Web
         {
             TElement element = Activator.CreateInstance<TElement>();
             element.By = findStrategy.Convert();
-            element.WrappedElement = WrappedElement;
+            element.ParentElement = WrappedElement;
 
             return element;
         }

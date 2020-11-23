@@ -7,7 +7,8 @@ namespace Unicorn.Web
 {
     public interface IElementWaitService
     {
-        // TODO: complete IElementWaitService and its implementation
-        void Wait(Element element, WaitStrategy waitStrategy);
+        ////// TODO: complete IElementWaitService and its implementation
+        ////////void Wait<TElement>(Element element, WaitStrategy waitStrategy);
+        ////void Wait(Element element, WaitStrategy waitStrategy);
     }
 }

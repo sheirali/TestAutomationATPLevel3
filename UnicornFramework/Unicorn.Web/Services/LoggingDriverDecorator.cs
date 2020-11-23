@@ -97,11 +97,11 @@ namespace Unicorn.Web.Services
         ////    Driver?.Start(browser);
         ////}
 
-        public void Wait(Element element, WaitStrategy waitStrategy)
-        {
-            Console.WriteLine($"Wait({element}, {waitStrategy})");
-            Driver?.Wait(element, waitStrategy);
-        }
+        ////public void Wait(Element element, WaitStrategy waitStrategy)
+        ////{
+        ////    Console.WriteLine($"Wait({element}, {waitStrategy})");
+        ////    Driver?.Wait(element, waitStrategy);
+        ////}
 
         public void WaitForAjax()
         {
