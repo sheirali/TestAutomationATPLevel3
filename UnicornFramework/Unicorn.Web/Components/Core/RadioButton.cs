@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Unicorn.Web
 {
-    public class Button : Element
+    public class RadioButton : Element
     {
-        public string InnerText => WrappedElement.Text;
+        public bool IsChecked => WrappedElement.Selected;
         public string Value => WrappedElement.GetAttribute("value");
 
         public bool IsDisabled => !WrappedElement.Enabled;

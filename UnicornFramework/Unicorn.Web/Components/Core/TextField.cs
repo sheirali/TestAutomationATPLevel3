@@ -4,16 +4,15 @@ using System.Text;
 
 namespace Unicorn.Web
 {
-    public class Button : Element
+    public class TextField : Element
     {
         public string InnerText => WrappedElement.Text;
-        public string Value => WrappedElement.GetAttribute("value");
-
         public bool IsDisabled => !WrappedElement.Enabled;
 
-        public void Click()
+        public void TypeText(string text)
         {
-            WrappedElement.Click();
+            WrappedElement.Clear();
+            WrappedElement.SendKeys(text);
         }
     }
 }

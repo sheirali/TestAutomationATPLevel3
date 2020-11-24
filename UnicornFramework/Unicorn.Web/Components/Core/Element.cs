@@ -13,7 +13,6 @@ namespace Unicorn.Web
     {
         private List<WaitStrategy> _waitStrategies = new List<WaitStrategy>();
         protected IWebDriver Driver;
-        ////private IElementWaitService _elementWaitService = new WebCoreDriver(Driver);
 
         public Element()
         {

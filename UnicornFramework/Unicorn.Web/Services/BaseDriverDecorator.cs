@@ -69,11 +69,16 @@ namespace Unicorn.Web.Services
 
         public void DeleteAllCookies() => Driver?.DeleteAllCookies();
         public void DeleteCookie(Cookie cookie) => Driver?.DeleteCookie(cookie);
+        public IInteractionsService DoubleClick(Element element) => throw new NotImplementedException();
+        public IInteractionsService DragAndDrop(Element sourceElement, Element destinationElement) => throw new NotImplementedException();
         public object Execute(string script) => Driver?.Execute(script);
         public Cookie GetCookie(string cookieName) => throw new NotImplementedException();
         public void GoToUrl(string url) => Driver?.GoToUrl(url);
         public void Handle() => Driver?.Handle();
         public void Handle(Action<IAlert> action = null, DialogButton dialogButton = DialogButton.Ok) => throw new NotImplementedException();
+        public IInteractionsService MoveToElement(Element element) => throw new NotImplementedException();
+        public void Perform() => throw new NotImplementedException();
+        public IInteractionsService Release() => throw new NotImplementedException();
 
         ////public void Quit() => Driver?.Quit();
         ////public void Start(Browser browser) => Driver?.Start(browser);

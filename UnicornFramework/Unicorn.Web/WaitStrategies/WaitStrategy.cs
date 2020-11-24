@@ -3,15 +3,20 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Unicorn.Web.Configuration;
 
 namespace Unicorn.Web.WaitStrategies
 {
     public abstract class WaitStrategy
     {
-        // TODO: complete class WaitStrategy
+        private int _DEFAULT_TIMEOUT = 30;
         protected WaitStrategy(int? timeoutIntervalInSeconds = null, int? sleepIntervalInSeconds = null)
         {
-            TimeoutInterval = TimeSpan.FromSeconds(timeoutIntervalInSeconds ?? 30);
+            ////int timeoutInterval = timeoutIntervalInSeconds ??
+            ////    ConfigurationService.GetSection<TimeoutSettings>().ElementToExistTimeout;
+            ////TimeoutInterval = TimeSpan.FromSeconds(timeoutInterval);
+
+            TimeoutInterval = TimeSpan.FromSeconds(timeoutIntervalInSeconds ?? _DEFAULT_TIMEOUT);
             SleepInterval = TimeSpan.FromSeconds(sleepIntervalInSeconds ?? 2);
         }
 
