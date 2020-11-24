@@ -11,7 +11,7 @@ namespace Unicorn.Web
 
         public bool IsDisabled => !WrappedElement.Enabled;
 
-        public void Check(bool isChecked=true)
+        public void Check(bool isChecked = true)
         {
             if (isChecked && !WrappedElement.Selected || !isChecked && WrappedElement.Selected)
             {
