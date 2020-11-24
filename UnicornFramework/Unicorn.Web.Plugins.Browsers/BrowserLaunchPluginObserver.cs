@@ -28,10 +28,6 @@ namespace Unicorn.Web.Plugins.Browser
             {
                 RestartBrowser();
             }
-            else
-            {
-                _driverFactory.DeleteAllCookies();
-            }
 
             _previousBrowserConfiguration = _currentBrowserConfiguration;
         }
@@ -67,10 +63,6 @@ namespace Unicorn.Web.Plugins.Browser
                 && testOutcome == TestOutcome.Failed)
             {
                 RestartBrowser();
-            }
-            else
-            {
-                _driverFactory.DeleteAllCookies();
             }
         }
 

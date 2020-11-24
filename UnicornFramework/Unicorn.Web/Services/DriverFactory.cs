@@ -44,21 +44,25 @@ namespace Unicorn.Web.Services
                     driver = new ChromeDriver(Environment.CurrentDirectory);
                     driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Chrome.PageLoadTimeout);
                     driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Chrome.ScriptTimeout);
+                    driver.Manage().Window.Maximize();
                     break;
                 case Browser.Firefox:
                     driver = new FirefoxDriver(Environment.CurrentDirectory);
                     driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().FireFox.PageLoadTimeout);
                     driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().FireFox.ScriptTimeout);
+                    driver.Manage().Window.Maximize();
                     break;
                 case Browser.Edge:
                     driver = new EdgeDriver(Environment.CurrentDirectory);
                     driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Edge.PageLoadTimeout);
                     driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Edge.ScriptTimeout);
+                    driver.Manage().Window.Maximize();
                     break;
                 case Browser.Safari:
                     driver = new SafariDriver(Environment.CurrentDirectory);
                     driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Safari.PageLoadTimeout);
                     driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(ConfigurationService.GetSection<WebSettings>().Safari.ScriptTimeout);
+                    driver.Manage().Window.Maximize();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(browserConfiguration.Browser), browserConfiguration.BrowserBehavior.ToString());
@@ -67,17 +71,13 @@ namespace Unicorn.Web.Services
             ServiceContainer.RegisterInstance<IWebDriver>(driver);
         }
 
-        public void DeleteAllCookies()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             if (!_disposed)
             {
                 var driver = ServiceContainer.Resolve<IWebDriver>();
                 driver?.Quit();
+                driver?.Dispose();
 
                 ServiceContainer.UnRegisterInstance<IWebDriver>();
                 GC.SuppressFinalize(this);

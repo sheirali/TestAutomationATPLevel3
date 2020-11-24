@@ -12,6 +12,12 @@ namespace Unicorn.Web.Services
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _webDriverWait;
 
+        public WebCoreDriver()
+        {
+            // TODO:  had to add this parameter-less constructo so that  WebApp(){ServiceContainer.Resolve<WebCoreDriver>()} works
+            // but then _driver is null :-(
+        }
+
         public WebCoreDriver(IWebDriver wrappedDriver)
         {
             _driver = wrappedDriver;

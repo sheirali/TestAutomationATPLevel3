@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Unicorn;
@@ -12,8 +13,11 @@ namespace Unicorn.Web
 
         public WebApp()
         {
-            var webCoreDriver = ServiceContainer.Resolve<WebCoreDriver>();
-            _driver = new LoggingDriverDecorator(webCoreDriver);
+            // from DriverFactory
+            var webDriver = ServiceContainer.Resolve<IWebDriver>(); // null :-(
+            WebCoreDriver wcDriver = new WebCoreDriver(webDriver);
+
+            _driver = new LoggingDriverDecorator(wcDriver);
         }
 
         public IElementCreateService ElementCreateService => _driver;
