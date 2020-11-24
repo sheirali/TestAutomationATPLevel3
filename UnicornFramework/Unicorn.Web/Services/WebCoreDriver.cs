@@ -7,7 +7,7 @@ using Unicorn.Web.Configuration;
 
 namespace Unicorn.Web.Services
 {
-    public partial class WebCoreDriver
+    public partial class WebCoreDriver : IDriver
     {
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _webDriverWait;

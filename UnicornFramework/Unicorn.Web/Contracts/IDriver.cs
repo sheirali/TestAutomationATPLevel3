@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Unicorn.Web
 {
-    public interface IDriver : INavigationService, ICookieService, IDialogService, IBrowserService, IElementCreateService, IElementWaitService, IJavaScriptService
+    public interface IDriver : INavigationService, ICookieService, IDialogService, IBrowserService, IElementCreateService, IJavaScriptService
     {
     }
 }
