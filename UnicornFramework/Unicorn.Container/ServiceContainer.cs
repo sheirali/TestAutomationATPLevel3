@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity;
 using Unity.Lifetime;
 
@@ -17,8 +18,18 @@ namespace Unicorn
 
         public static T Resolve<T>()
         {
-            T result = _container.Resolve<T>();
-            return result;
+            try
+            {
+                T result = _container.Resolve<T>();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                ////throw;
+            }
+
+            return default;
         }
 
         public static IEnumerable<T> ResolveAll<T>()
@@ -27,7 +38,7 @@ namespace Unicorn
             return result;
         }
 
-        public static void Register<TFrom, TTo>()
+        public static void RegisterType<TFrom, TTo>()
             where TTo : TFrom
         {
             lock (_lockObject)
@@ -36,7 +47,7 @@ namespace Unicorn
             }
         }
 
-        public static void Register<TFrom, TTo>(string name)
+        public static void RegisterType<TFrom, TTo>(string name)
             where TTo : TFrom
         {
             lock (_lockObject)
@@ -45,9 +56,15 @@ namespace Unicorn
             }
         }
 
-        public static void ResisterInstance<TFrom>(TFrom instance)
+        public static void RegisterInstance<TFrom>(TFrom instance)
         {
-            _container.RegisterInstance<TFrom>(instance);
+            _container.RegisterInstance<TFrom>(instance, new ContainerControlledLifetimeManager());
+        }
+
+        public static void UnRegisterInstance<TFrom>()
+        {
+            var registration = _container.Registrations.FirstOrDefault(r => r.RegisteredType.Equals(typeof(TFrom)));
+            registration?.LifetimeManager.RemoveValue();
         }
     }
 }

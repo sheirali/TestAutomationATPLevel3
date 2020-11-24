@@ -1,13 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\sharedInfo.targets" />
-
-	<ItemGroup>
-		<PackageReference Include="NUnit" Version="3.12.0" />
-	</ItemGroup>
-
 	<ItemGroup>
 	  <ProjectReference Include="..\Unicorn.Container\Unicorn.Container.csproj" />
 	  <ProjectReference Include="..\Unicorn.Plugins\Unicorn.Plugins.csproj" />
+	  <ProjectReference Include="..\Unicorn.Web\Unicorn.Web.csproj" />
 	</ItemGroup>
-
 </Project>

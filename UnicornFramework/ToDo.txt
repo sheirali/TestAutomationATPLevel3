@@ -8,6 +8,8 @@ complete enums and classes in
 	see getting STarted Extend Existing Common Services
 	see OptimizeTestsDemos
 
+	see book chapt 10
+
 \Unicorn.Web\Services\
 BaseDriverDecorator.cs
 

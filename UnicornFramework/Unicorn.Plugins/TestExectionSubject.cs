@@ -11,6 +11,7 @@ namespace Unicorn.Plugins
 
         public TestExectionSubject()
         {
+            ////_testExecutionPlugins.Add(this);
         }
 
         public void Attach(BaseTestExectionPluginObserver observer)

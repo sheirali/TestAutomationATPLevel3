@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using Unicorn.Plugins;
 
@@ -11,25 +14,28 @@ namespace Unicorn.NUnit
 
         public BaseTest()
         {
+            ////InitializeTestExecutionBehaviourObservers();
         }
 
         public TestContext TestContext { get; set; }
 
-        public string TestName => TestContext.CurrentContext.Test.FullName;
+        public string TestName => TestContext.CurrentContext.Test.Name;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            var memberInfo = GetType().GetMethod(TestName);
-            _testExecutionSubject.PreClassInit(memberInfo);
-            ClassInit();
-            _testExecutionSubject.PostClassInit(memberInfo);
+            InitializeTestExecutionBehaviourObservers();
+            ////var memberInfo = GetCurrentExecutionTestClassType().GetMethod(TestName);
+            ////_testExecutionSubject.PreClassInit(memberInfo);
+            ////ClassInit();
+            ////_testExecutionSubject.PostClassInit(memberInfo);
         }
 
         [SetUp]
         public void SetUp()
         {
-            var memberInfo = GetType().GetMethod(TestName);
+            ////InitializeTestExecutionBehaviourObservers();
+            var memberInfo = GetCurrentExecutionTestClassType().GetMethod(TestName);
             _testExecutionSubject.PreTestInit(memberInfo);
             TestInit();
             _testExecutionSubject.PostTestInit(memberInfo);
@@ -38,7 +44,8 @@ namespace Unicorn.NUnit
         [TearDown]
         public void TearDown()
         {
-            var memberInfo = GetType().GetMethod(TestName);
+            ////InitializeTestExecutionBehaviourObservers();
+            var memberInfo = GetCurrentExecutionTestClassType().GetMethod(TestName);
             var outcome = (TestOutcome)TestContext.CurrentContext.Result.Outcome.Status;
             _testExecutionSubject.PreTestCleanup(outcome, memberInfo);
             TestCleanup();
@@ -55,6 +62,25 @@ namespace Unicorn.NUnit
 
         public virtual void TestCleanup()
         {
+        }
+
+        private Type GetCurrentExecutionTestClassType()
+        {
+            // TODO: fix method GetCurrentExecutionTestClassType()
+            ////var classType = Assembly.GetEntryAssembly().GetType(TestContext.CurrentContext.Test.ClassName);
+            ////var stackFrame = new StackTrace().GetFrames().FirstOrDefault();
+            var classType = GetType().Assembly.GetType(TestContext.CurrentContext.Test.ClassName);
+            ////var classType = Assembly.GetExecutingAssembly().GetType(TestContext.CurrentContext.Test.ClassName);
+            return classType;
+        }
+
+        private void InitializeTestExecutionBehaviourObservers()
+        {
+            var observers = ServiceContainer.ResolveAll<BaseTestExectionPluginObserver>();
+            foreach (var observer in observers)
+            {
+                _testExecutionSubject.Attach(observer);
+            }
         }
     }
 }

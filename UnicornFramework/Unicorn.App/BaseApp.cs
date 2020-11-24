@@ -18,21 +18,26 @@ namespace Unicorn
             return result;
         }
 
-        public static void Register<TFrom, TTo>()
+        public static void RegisterType<TFrom, TTo>()
             where TTo : TFrom
         {
-            ServiceContainer.Register<TFrom, TTo>();
+            ServiceContainer.RegisterType<TFrom, TTo>();
         }
 
-        public static void Register<TFrom, TTo>(string name)
+        public static void RegisterType<TFrom, TTo>(string name)
             where TTo : TFrom
         {
-            ServiceContainer.Register<TFrom, TTo>(name);
+            ServiceContainer.RegisterType<TFrom, TTo>(name);
         }
 
-        public static void ResisterInstance<TFrom>(TFrom instance)
+        public static void RegisterInstance<TFrom>(TFrom instance)
         {
-            ServiceContainer.ResisterInstance<TFrom>(instance);
+            ServiceContainer.RegisterInstance<TFrom>(instance);
+        }
+
+        public static void UnRegisterInstance<TFrom>()
+        {
+            ServiceContainer.UnRegisterInstance<TFrom>();
         }
 
         public void Dispose()

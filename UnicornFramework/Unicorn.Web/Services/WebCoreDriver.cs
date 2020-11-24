@@ -12,10 +12,10 @@ namespace Unicorn.Web.Services
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _webDriverWait;
 
-        protected WebCoreDriver(IWebDriver wrappedDriver)
+        public WebCoreDriver(IWebDriver wrappedDriver)
         {
             _driver = wrappedDriver;
-            var timeoutSettings = ConfigurationService.GetSection<TimeoutSettings>();
+            var timeoutSettings = ConfigurationService.GetSection<WebSettings>().TimeoutSettings;
             _webDriverWait = new WebDriverWait(wrappedDriver, TimeSpan.FromSeconds(timeoutSettings.WaitForAjaxTimeout));
         }
 

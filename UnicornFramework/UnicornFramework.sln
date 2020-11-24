@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Plugins.Screenshot"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Plugins.VideoRecording", "Unicorn.Plugins.VideoRecording\Unicorn.Plugins.VideoRecording.csproj", "{4F41192C-10D4-495E-8824-F84BAC1356ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Web.Plugins.Browsers", "Unicorn.Web.Plugins.Browsers\Unicorn.Web.Plugins.Browsers.csproj", "{DB07ECF0-7ECD-4DD0-A4FF-B0B660141AE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Web.Plugins.Browser", "Unicorn.Web.Plugins.Browsers\Unicorn.Web.Plugins.Browser.csproj", "{DB07ECF0-7ECD-4DD0-A4FF-B0B660141AE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Desktop.Plugins", "Unicorn.Desktop.Plugins\Unicorn.Desktop.Plugins.csproj", "{9BE143F4-B63F-4109-AE50-E13C9B47BF00}"
 EndProject
@@ -62,9 +62,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.App", "Unicorn.App\Unicorn.App.csproj", "{1A62229E-B6F4-4D74-8DF6-F7E49BDF0715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicorn.Utilities", "Unicorn.Utilities\Unicorn.Utilities.csproj", "{ADD1DBE7-4281-4B26-B37C-114D855F1238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Utilities", "Unicorn.Utilities\Unicorn.Utilities.csproj", "{ADD1DBE7-4281-4B26-B37C-114D855F1238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicorn.Web.Proxy", "Unicorn.Web.Proxy\Unicorn.Web.Proxy.csproj", "{115500CD-AA04-4922-8083-9C10DF45DAAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicorn.Web.Proxy", "Unicorn.Web.Proxy\Unicorn.Web.Proxy.csproj", "{115500CD-AA04-4922-8083-9C10DF45DAAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

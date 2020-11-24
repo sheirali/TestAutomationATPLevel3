@@ -13,7 +13,7 @@ namespace Unicorn.Web.WaitStrategies
             : base(timeoutIntervalInSeconds, sleepIntervalInSeconds)
         {
             int timeoutInterval = timeoutIntervalInSeconds ??
-                ConfigurationService.GetSection<TimeoutSettings>().ElementToBeVisibleTimeout;
+                ConfigurationService.GetSection<WebSettings>().TimeoutSettings.ElementToBeVisibleTimeout;
             TimeoutInterval = TimeSpan.FromSeconds(timeoutInterval);
         }
 
