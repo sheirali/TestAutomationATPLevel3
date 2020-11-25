@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using Unicorn;
+using Unicorn.Web;
 using Unicorn.Web.FindStrategies;
 using Unicorn.Web.Services;
 
-namespace Unicorn.Web
+namespace Unicorn
 {
+    // TODO:  create the ElementsList<TElement> : IEnumerable<TElement>
     public abstract class Element : IElementCreateService
     {
         private List<WaitStrategy> _waitStrategies = new List<WaitStrategy>();
