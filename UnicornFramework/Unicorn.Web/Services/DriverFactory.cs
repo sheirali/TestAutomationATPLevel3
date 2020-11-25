@@ -68,7 +68,7 @@ namespace Unicorn.Web.Services
                     throw new ArgumentOutOfRangeException(nameof(browserConfiguration.Browser), browserConfiguration.BrowserBehavior.ToString());
             }
 
-            ServiceContainer.RegisterInstance<IWebDriver>(driver);
+            ServiceContainer.RegisterInstance(driver);
         }
 
         public void Dispose()

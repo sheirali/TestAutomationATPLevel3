@@ -13,10 +13,7 @@ namespace Unicorn.Web
 
         public WebApp()
         {
-            // from DriverFactory
-            var webDriver = ServiceContainer.Resolve<IWebDriver>(); // null :-(
-            WebCoreDriver wcDriver = new WebCoreDriver(webDriver);
-
+            WebCoreDriver wcDriver = ServiceContainer.Resolve<WebCoreDriver>();
             _driver = new LoggingDriverDecorator(wcDriver);
         }
 

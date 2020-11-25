@@ -25,7 +25,7 @@ namespace Unicorn.FrameworkTests
         }
 
         [Test]
-        public void Test1()
+        public void CreateTestPurchase()
         {
             App.NavigationService.GoToUrl("http://demos.bellatrix.solutions/");
             ////Button button = App.ElementCreateService.CreateById<Button>("myID").ToExists().ToBeClickable();

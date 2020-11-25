@@ -17,7 +17,7 @@ namespace Unicorn.Web.Plugins.Browser
         {
             ////_driverFactory = new DriverFactory();
             _driverFactory = ServiceContainer.Resolve<DriverFactory>();
-            ServiceContainer.RegisterInstance<DriverFactory>(_driverFactory);
+            ServiceContainer.RegisterInstance(_driverFactory);
         }
 
         public override void PreTestInit(MemberInfo memberInfo)
