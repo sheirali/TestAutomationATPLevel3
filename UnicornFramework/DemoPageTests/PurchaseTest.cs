@@ -36,7 +36,7 @@ namespace DemoPageTests
         }
 
         [Test]
-        public void CreateTestPurchase()
+        public void AppNavigationService()
         {
             App.NavigationService.GoToUrl("http://demos.bellatrix.solutions/");
             ////Button button = App.ElementCreateService.CreateById<Button>("myID").ToExists().ToBeClickable();
@@ -46,7 +46,8 @@ namespace DemoPageTests
         [Test]
         public void ShopPageModel()
         {
-            ShopPage page = new ShopPage();
+            ////ShopPage page = new ShopPage();
+            ShopPage page = App.Create<ShopPage>();
             page.AddFalcon9RocetToCart();
         }
 
