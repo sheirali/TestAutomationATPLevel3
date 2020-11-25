@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using Unicorn;
 using Unicorn.Web.FindStrategies;
 using Unicorn.Web.Services;
-using Unicorn.Web.WaitStrategies;
 
 namespace Unicorn.Web
 {

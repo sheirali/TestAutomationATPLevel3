@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Unicorn.Web.Configuration;
 
-namespace Unicorn.Web.WaitStrategies
+namespace Unicorn
 {
     public class ToBeVisibleWaitStrategy : WaitStrategy
     {

@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Unicorn;
 using Unicorn.Web.FindStrategies;
-using Unicorn.Web.WaitStrategies;
 
 namespace Unicorn.Web.Services
 {

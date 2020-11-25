@@ -3,9 +3,9 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Unicorn;
 using Unicorn.Web;
 using Unicorn.Web.Configuration;
-using Unicorn.Web.WaitStrategies;
 
 namespace Unicorn
 {
