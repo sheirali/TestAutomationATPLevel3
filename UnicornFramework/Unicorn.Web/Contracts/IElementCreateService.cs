@@ -21,6 +21,10 @@ namespace Unicorn.Web
             where TElement : Element;
         TElement CreateByLinkText<TElement>(string linkText)
             where TElement : Element;
+
+        TElement CreateByName<TElement>(string controlName)
+            where TElement : Element;
+
         List<TElement> CreateAllById<TElement>(string id)
             where TElement : Element;
         List<TElement> CreateAllByXPath<TElement>(string xpath)

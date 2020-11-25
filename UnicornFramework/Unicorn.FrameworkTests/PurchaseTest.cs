@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using Unicorn.Web;
 using Unicorn.Web.Plugins.Browser;
@@ -12,6 +14,11 @@ namespace Unicorn.FrameworkTests
         public override void ClassInit()
         {
             Console.WriteLine("PurchaseTest.ClassInit");
+
+            // example of adding options
+            ChromeOptions options = new ();
+            options.PageLoadStrategy = PageLoadStrategy.Eager;
+            App.AddBrowserOptions(options);
         }
 
         public override void TestInit()

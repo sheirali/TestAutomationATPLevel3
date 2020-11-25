@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unicorn;
+using Unicorn.Web.Pages;
 using Unicorn.Web.Services;
 
 namespace Unicorn.Web
@@ -25,21 +26,24 @@ namespace Unicorn.Web
         public IJavaScriptService JavaScriptService => _driver;
         public IInteractionsService InteractionsService => _driver;
 
-        public void AddBrowserOptions<TOptions>()
+        public void AddBrowserOptions<TOptions>(TOptions customOptions)
             where TOptions : class
         {
+            ServiceContainer.RegisterInstance<TOptions>(customOptions, Guid.NewGuid().ToString());
         }
 
         public TPage Create<TPage>()
-            where TPage : class
+            where TPage : Page
         {
-            return default;
+            return ServiceContainer.Resolve<TPage>();
         }
 
         public TPage GoTo<TPage>()
-            where TPage : class
+            where TPage : NavigatablePage
         {
-            return default;
+            var page = ServiceContainer.Resolve<TPage>();
+            page.Open();
+            return page;
         }
     }
 }

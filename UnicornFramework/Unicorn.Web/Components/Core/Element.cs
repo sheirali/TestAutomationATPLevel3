@@ -118,6 +118,12 @@ namespace Unicorn.Web
             return Create<TElement>(new LinkTextFindStrategy(linkText));
         }
 
+        public TElement CreateByName<TElement>(string controlName)
+            where TElement : Element
+        {
+            return Create<TElement>(new NameFindStrategy(controlName));
+        }
+
         // TODO: implement  List<TElement> CreateXXX methods, maybe List<TElement> => to custom object
         public List<TElement> CreateAllById<TElement>(string id)
             where TElement : Element

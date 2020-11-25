@@ -1,0 +1,18 @@
+//https://jsonlint.com/ says file is valid, yet VS2019 warnings
+{
+  "billingDetailItem": {
+    "firstName": "Fred",
+    "lastName": "Flintstone",
+    "companyName": "Rubble Rocks",
+    "country": "Canada",
+    "addressLine1": "123 NoWhere Ave.",
+    "addressLine2": "Suite 678",
+    "city": "Ottawa",
+    "state": "Ontario",
+    "postalCode": "K1K 2S2",
+    "phoneNumber": "(613) 123-4567",
+    "emailAddress": "fred@rubblerocks.com",
+    "orderNotes": "This is from json file.",
+    "createAccount": true
+  }
+}

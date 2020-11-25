@@ -60,6 +60,8 @@ namespace Unicorn.Web.Services
         public TElement CreateByLinkText<TElement>(string linkText)
             where TElement : Element
             => Driver?.CreateByLinkText<TElement>(linkText);
+        public TElement CreateByName<TElement>(string controlName)
+            where TElement : Element => Driver?.CreateByName<TElement>(controlName);
         public TElement CreateByTag<TElement>(string tag)
             where TElement : Element
             => Driver?.CreateByTag<TElement>(tag);

@@ -32,6 +32,22 @@ namespace Unicorn
             return default;
         }
 
+        public static T Resolve<T>(string uniqueName)
+        {
+            try
+            {
+                T result = _container.Resolve<T>(uniqueName);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                ////throw;
+            }
+
+            return default;
+        }
+
         public static IEnumerable<T> ResolveAll<T>()
         {
             IEnumerable<T> result = _container.ResolveAll<T>();
@@ -59,6 +75,11 @@ namespace Unicorn
         public static void RegisterInstance<TFrom>(TFrom instance)
         {
             _container.RegisterInstance<TFrom>(instance, new ContainerControlledLifetimeManager());
+        }
+
+        public static void RegisterInstance<TFrom>(TFrom instance, string uniqueName)
+        {
+            _container.RegisterInstance<TFrom>(uniqueName, instance, new ContainerControlledLifetimeManager());
         }
 
         public static void UnRegisterInstance<TFrom>()

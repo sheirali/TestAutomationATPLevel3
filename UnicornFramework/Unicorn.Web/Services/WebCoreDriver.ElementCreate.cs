@@ -64,6 +64,12 @@ namespace Unicorn.Web.Services
             return Create<TElement>(new LinkTextFindStrategy(linkText));
         }
 
+        public TElement CreateByName<TElement>(string controlName)
+            where TElement : Element
+        {
+            return Create<TElement>(new NameFindStrategy(controlName));
+        }
+
         public TElement CreateByTag<TElement>(string tag)
             where TElement : Element
         {
