@@ -17,14 +17,7 @@
     <ProjectReference Include="..\Unicorn.Web.Plugins.Browsers\Unicorn.Web.Plugins.Browser.csproj" />
     <ProjectReference Include="..\Unicorn.Web\Unicorn.Web.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
+	  
 	<ItemGroup>
 		<None Update="testFrameworkSettings.$(Configuration).json">			
 		</None>
