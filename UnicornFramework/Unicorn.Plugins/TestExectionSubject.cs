@@ -7,11 +7,11 @@ namespace Unicorn.Plugins
 {
     public class TestExectionSubject
     {
-        private readonly List<BaseTestExectionPluginObserver> _testExecutionPlugins = new List<BaseTestExectionPluginObserver>();
+        private readonly List<BaseTestExectionPluginObserver> _testExecutionPlugins;
 
         public TestExectionSubject()
         {
-            ////_testExecutionPlugins.Add(this);
+            _testExecutionPlugins = new List<BaseTestExectionPluginObserver>();
         }
 
         public void Attach(BaseTestExectionPluginObserver observer)

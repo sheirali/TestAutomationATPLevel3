@@ -19,10 +19,10 @@ namespace DemoPageTests
         {
             Console.WriteLine("PurchaseTest.ClassInit");
 
-            // example of adding options
-            ChromeOptions options = new ();
-            options.PageLoadStrategy = PageLoadStrategy.Eager;
-            App.AddBrowserOptions(options);
+            ////// example of adding options
+            ////ChromeOptions options = new ();
+            ////options.PageLoadStrategy = PageLoadStrategy.Eager;
+            ////App.AddBrowserOptions(options);
         }
 
         public override void TestInit()
@@ -44,9 +44,9 @@ namespace DemoPageTests
         }
 
         [Test]
-        public void ShopPageModel()
+        public void NavigateToShopPage()
         {
-            ShopPage page = new ShopPage();
+            ShopPage page = App.GoTo<ShopPage>();
             page.AddFalcon9RocetToCart();
         }
 

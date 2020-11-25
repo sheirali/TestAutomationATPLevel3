@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Unicorn.Web.Configuration
 {
-    // TODO: complete BrowserSettings
     public class WebSettings
     {
         public TimeoutSettings TimeoutSettings { get; set; }

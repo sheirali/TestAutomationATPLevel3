@@ -28,18 +28,6 @@
 	<ItemGroup>
 		<None Update="testFrameworkSettings.$(Configuration).json">
 		</None>
-		<None Update="testFrameworkSettings.Debug.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="testFrameworkSettings.Release.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Tests\BillingUserInfo.json">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Tests\BillingUserInfo.QA.json">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 	</ItemGroup>	
 	
 </Project>
