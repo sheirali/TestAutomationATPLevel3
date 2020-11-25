@@ -34,7 +34,7 @@
 		<None Update="testFrameworkSettings.Release.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="Tests\BillingUserInfo.LOCAL.json">
+		<None Update="Tests\BillingUserInfo.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="Tests\BillingUserInfo.QA.json">
